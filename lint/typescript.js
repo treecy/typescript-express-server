@@ -2,6 +2,13 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: './basic.js',
   plugins: ["jest", "@typescript-eslint"],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   rules: {
     // Prevent TypeScript-specific constructs from being erroneously flagged as unused
     '@typescript-eslint/no-unused-vars'         : 'error',
