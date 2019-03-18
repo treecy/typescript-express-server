@@ -1,5 +1,5 @@
 import express from 'express';
-import {getUsers} from './controllers';
+import { getUsers } from './controllers';
 
 // Constants
 const PORT = 8080;
@@ -11,9 +11,7 @@ app.get('/', (req, res) => {
   res.send('Hello world\n');
 });
 
-app.get('/users', (req, res) => {
-  res.send('Hello world\n');
-});
+app.get('/users', async (req, res) => getUsers('Hello world\n'));
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);

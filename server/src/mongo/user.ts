@@ -1,7 +1,7 @@
 import {
   Schema, Model, Document, model,
 } from 'mongoose';
-import { IUser } from '../types/user';
+import { IUser } from 'types/user';
 
 export interface IUserModel extends IUser, Document {
     fullName(): string;

@@ -10,6 +10,7 @@ const presets = [
 const plugins = [
   ['module-resolver', {
     root: ['./src'],
+    extensions: ['.js', '.ts']
   }],
 ];
 module.exports = { presets, plugins };
