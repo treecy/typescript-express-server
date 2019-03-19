@@ -1,0 +1,25 @@
+{
+  "name": "webui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.14",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "react": "^16.8.4",
+    "react-apollo": "^2.5.2",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^16.8.2",
+    "eslint": "^5.15.3"
+  }
+}
