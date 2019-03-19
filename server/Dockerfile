@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10 as compile
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,7 +10,22 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY .. .
+COPY . ./
+
+RUN npm run clean && npm run compile
+
+FROM node:10
+
+## App directory
+WORKDIR /srv/app
+
+## Install production node_modules
+COPY --from=compile /usr/src/app/package*.json /srv/app/
+RUN npm install -P
+
+## Copy compiled files etc...
+COPY --from=compile /usr/src/app/dist/ /srv/app/dist/
+
 
 EXPOSE 8080
 CMD ["npm", "start"]
