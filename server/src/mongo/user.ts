@@ -24,3 +24,7 @@ UserSchema.pre('save', (next) => {
 UserSchema.methods.fullName = (): string => `${this.firstName.trim()} ${this.lastName.trim()}`;
 
 export const User: Model<IUserModel> = model<IUserModel>('User', UserSchema);
+
+export function find(options: IUser = {}) {
+  return User.find(options).exec();
+}

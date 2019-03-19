@@ -10,9 +10,6 @@ module.exports = {
         root: ['./src'],
         extensions: ['.js', '.ts',],
       },
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
     }
   }
 };
