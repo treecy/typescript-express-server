@@ -3,5 +3,8 @@ module.exports = {
   env: {
     es6: true,
     node: true
+  },
+  rules: {
+    'key-spacing': ['error', {align: {}}]
   }
 };
