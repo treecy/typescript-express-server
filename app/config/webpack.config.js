@@ -9,14 +9,15 @@ const config = {
   },
   output: {
     filename  : '[name].[hash].js',
-    path      : basicConfig.distAssetsDir,
-    publicPath: 'http://localhost:3000/assets/',
+    path      : basicConfig.distDir,
+    publicPath: '/',
   },
 
   devServer: {
     contentBase: basicConfig.distDir,
     port       : 3000,
-    publicPath : 'http://localhost:3000/assets/',
+    publicPath : '/',
+    historyApiFallback: true,
   },
 
   resolve: {

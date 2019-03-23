@@ -1,8 +1,9 @@
 import React from "react";
+import AppRouter from './routes';
 
 export default () => (
   <div className="App">
-    <h1>Hello CodeSandbox</h1>
-    <h2>Start editing to see some magic happen!</h2>
+    <h1>React&Apollo Application</h1>
+    <AppRouter />
   </div>
 );
