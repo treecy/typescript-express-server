@@ -12,7 +12,7 @@ const config = {
   distAssetsDir: path.resolve(ROOT, 'dist/assets'),
   publicDir    : path.resolve(ROOT, 'public'),
   nmDir        : path.resolve(ROOT, 'node_modules'),
-  entryHTML    : path.resolve(ROOT, 'index.html'),
+  entryHTML    : path.resolve(ROOT, 'src/index.html'),
 };
 
 module.exports = config;
