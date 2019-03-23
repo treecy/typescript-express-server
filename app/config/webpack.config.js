@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const basicConfig = require('./basic.config');
 
 const config = {
@@ -7,17 +8,22 @@ const config = {
   },
   output: {
     filename: '[name].[hash].js',
-    path    : basicConfig.distDir,
+    path    : basicConfig.distAssetsDir,
   },
 
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js'],
+    modules   : [
+      basicConfig.sourceDir,
+      basicConfig.nmDir,
+    ],
   },
 
   module: {
     rules: [],
   },
+
+  plugins: [],
 
 };
 
@@ -39,8 +45,6 @@ config.module.rules.push({
 // ------------------------------------
 // Style Loaders
 // ------------------------------------
-// We use cssnano with the postcss loader, so we tell
-// css-loader not to duplicate minimization.
 const extractStyles = new ExtractTextPlugin({
   filename : '[name].[hash].css',
   allChunks: true,
@@ -62,6 +66,7 @@ const cssloaderOptions = {
     safe         : true,
   },
 };
+
 config.module.rules.push({
   test  : /\.(sass|scss|css)$/,
   loader: extractStyles.extract({
@@ -82,15 +87,37 @@ config.module.rules.push({
   }),
 });
 
+
+// ------------------------------------
+// Output HTML
+// ------------------------------------
+const htmlPlugin = new HtmlWebpackPlugin({
+  template: basicConfig.entryHTML,
+  hash    : false,
+  filename: `${basicConfig.distDir}/index.html`,
+  inject  : 'body',
+  minify  : {
+    collapseWhitespace: true,
+  },
+});
+
 module.exports = (env, argv) => {
-  // ------------------------------------
-  // Development config
-  // ------------------------------------
-  let IS_DEV = false;
   if (argv.mode === 'development') {
-    IS_DEV = true;
+    // ------------------------------------
+    // Development Configuration
+    // ------------------------------------
+
     config.devtool = 'source-map';
+  } else if (argv.mode === 'production') {
+    // ------------------------------------
+    // Production Configuration
+    // ------------------------------------
   }
+
+  config.plugins.push(
+    extractStyles,
+    htmlPlugin,
+  );
 
   return config;
 };
