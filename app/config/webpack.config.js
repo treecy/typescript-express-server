@@ -9,14 +9,14 @@ const config = {
   },
   output: {
     filename  : '[name].[hash].js',
-    path      : basicConfig.distDir,
-    publicPath: '/',
+    path      : basicConfig.distAssetsDir,
+    publicPath: 'http://localhost:3000/assets/',
   },
 
   devServer: {
     contentBase: basicConfig.distDir,
     port       : 3000,
-    publicPath : '/',
+    publicPath : 'http://localhost:3000/assets/',
   },
 
   resolve: {
