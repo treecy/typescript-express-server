@@ -13,6 +13,9 @@ const config = {
     contentBase       : basicConfig.distDir,
     port              : 3000,
     historyApiFallback: true,
+    proxy             : {
+      '/graphql': 'http://localhost:4000',
+    },
   },
 
   plugins: [
