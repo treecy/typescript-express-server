@@ -60,20 +60,20 @@ const extractStyles = new ExtractTextPlugin({
 });
 const cssloaderOptions = {
   sourceMap: true,
-  minimize : {
-    autoprefixer: {
-      add     : true,
-      remove  : true,
-      browsers: ['last 2 versions'],
-    },
-    discardComments: {
-      removeAll: true,
-    },
-    discardUnused: false,
-    mergeIdents  : false,
-    reduceIdents : false,
-    safe         : true,
-  },
+  // minimize : {
+  //  autoprefixer: {
+  //    add     : true,
+  //    remove  : true,
+  //    browsers: ['last 2 versions'],
+  //  },
+  //  discardComments: {
+  //    removeAll: true,
+  //  },
+  //  discardUnused: false,
+  //  mergeIdents  : false,
+  //  reduceIdents : false,
+  //  safe         : true,
+  // },
 };
 
 config.module.rules.push({
@@ -96,6 +96,19 @@ config.module.rules.push({
   }),
 });
 
+// ------------------------------------
+// Static File Loader
+// ------------------------------------
+const fontPath = 'fonts/';
+config.module.rules.push(
+  { test: /\.woff(\?.*)?$/, loader: `url-loader?prefix=fonts/&name=${fontPath}[name].[ext]&limit=10000&mimetype=application/font-woff` },
+  { test: /\.woff2(\?.*)?$/, loader: `url-loader?prefix=fonts/&name=${fontPath}[name].[ext]&limit=10000&mimetype=application/font-woff2` },
+  { test: /\.otf(\?.*)?$/, loader: `file-loader?prefix=fonts/&name=${fontPath}[name].[ext]&limit=10000&mimetype=font/opentype` },
+  { test: /\.ttf(\?.*)?$/, loader: `url-loader?prefix=fonts/&name=${fontPath}[name].[ext]&limit=10000&mimetype=application/octet-stream` },
+  { test: /\.eot(\?.*)?$/, loader: `file-loader?prefix=fonts/&name=${fontPath}[name].[ext]` },
+  { test: /\.svg(\?.*)?$/, loader: `url-loader?prefix=fonts/&name=${fontPath}[name].[ext]&limit=10000&mimetype=image/svg+xml` },
+  { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+);
 
 // ------------------------------------
 // Output HTML
