@@ -2,22 +2,16 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const basicConfig = require('./basic.config');
+const devConfig = require('./webpack.dev.config');
 
-const config = {
+let config = {
   entry: {
     app: `${basicConfig.sourceDir}/index.tsx`,
   },
   output: {
     filename  : '[name].[hash].js',
-    path      : basicConfig.distDir,
-    publicPath: '/',
-  },
-
-  devServer: {
-    contentBase: basicConfig.distDir,
-    port       : 3000,
-    publicPath : '/',
-    historyApiFallback: true,
+    path      : basicConfig.distAssetsDir,
+    publicPath: '/assets/',
   },
 
   resolve: {
@@ -128,13 +122,7 @@ module.exports = (env, argv) => {
     // ------------------------------------
     // Development Configuration
     // ------------------------------------
-
-    config.devtool = 'source-map';
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  } else if (argv.mode === 'production') {
-    // ------------------------------------
-    // Production Configuration
-    // ------------------------------------
+    config = { ...config, ...devConfig };
   }
 
   config.plugins.push(
