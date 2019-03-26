@@ -1,10 +1,11 @@
 import {
   Schema, Model, Document, model,
 } from 'mongoose';
-import { IUser } from 'types/user';
 
-export interface IUserModel extends IUser, Document {
-    fullName(): string;
+export interface IUser {
+  email?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export const UserSchema: Schema = new Schema({
@@ -23,8 +24,23 @@ UserSchema.pre('save', (next) => {
 
 UserSchema.methods.fullName = () => `${this.firstName.trim()} ${this.lastName.trim()}`;
 
+export interface IUserModel extends IUser, Document {
+  fullName(): string;
+}
 export const User: Model<IUserModel> = model<IUserModel>('User', UserSchema);
 
 export function find(options: IUser = {}) {
   return User.find(options).exec();
+
+  // return [{
+  //   id: '1',
+  //   email: 'mick@gmail.com',
+  //   firstName: 'Mick',
+  //   lastName: 'Foo',
+  // }, {
+  //   id: '2',
+  //   email: 'sarah@gmail.com',
+  //   firstName: 'Sarah',
+  //   lastName: 'Bar',
+  // }];
 }

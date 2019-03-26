@@ -1,4 +1,4 @@
 import { ApolloServer } from 'apollo-server-express';
-import { typeDefs, resolvers } from 'graphql';
+import schema from 'schema';
 
-export default new ApolloServer({ typeDefs, resolvers });
+export default new ApolloServer({ schema });

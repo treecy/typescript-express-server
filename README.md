@@ -1,6 +1,6 @@
 # GraphQL Full-Stack Project
 
-This project is implemented with a React Client App and a [GraphQL](https://graphql.org/) server in NodeJS. 
+This project is implemented with a React Client App and a [GraphQL](https://graphql.org/) server in NodeJS.
 
 Everything is implemented from scratch.
 
@@ -28,10 +28,22 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-For running the app in your local you need to have **NodeJS** installed.
+For running the app in your local you need to have **NodeJS** and **MongoDB** installed.
 
+For testing the containerization, you need to have **Docker** installed.
 
 ### Installing
+Start the mongo instance with docker:
+```bash
+# Start a mongo container
+docker-compose -d up mongo
+
+# Copy the mock data into container
+docker cp server/mock/users.json mongo:/tmp/users.json
+
+# Import the mock data
+docker exec mongo mongoimport -d demo -c users --file /tmp/users.json
+```
 
 Running the app:
 ```bash

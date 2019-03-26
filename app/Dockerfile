@@ -1,3 +1,4 @@
+# Make a compile layer
 FROM node:10 as compile
 
 # Create app directory
@@ -12,9 +13,10 @@ RUN npm install
 # Bundle app source
 COPY . ./
 
-RUN npm run clean && npm run build
+RUN npm run build
 
-FROM node:10
+# The final image will only use nginx for servering static files
+FROM nginx:1.15
 
 ## App directory
 WORKDIR /srv/app
@@ -25,4 +27,4 @@ COPY --from=compile /usr/src/app/package.json /srv/app/
 COPY --from=compile /usr/src/app/nginx.conf /srv/app/
 
 EXPOSE 80
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]

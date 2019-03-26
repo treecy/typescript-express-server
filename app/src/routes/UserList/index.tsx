@@ -9,9 +9,23 @@ const UserList:React.FC = (props: IProps) => (
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
-      return data.users.map(({ email, firstName, lastName }) => (
-        <p>Email: {email}, Name: {firstName} {lastName}</p>
-      ));
+
+      return (
+        <table>
+          <thead>
+            <th>Email</th>
+            <th>Full Name</th>
+          </thead>
+          <tbody>
+            {data.users.map(({ email, firstName, lastName }) => (
+              <tr>
+                <td>{email}</td>
+                <td>{firstName} {lastName}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
     }}
   </Query>
 )

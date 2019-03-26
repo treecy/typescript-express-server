@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/index.js",
+    "start": "nodemon --exec babel-node --extensions .ts,.js src/index.ts",
     "compile": "npx babel --extensions .ts,.js src --out-dir dist --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/express": "^4.16.1",
@@ -36,12 +37,14 @@
     "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "nodemon": "^1.18.10",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
     "express": "^4.16.4",
     "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
     "mongoose": "^5.2.17"
   }
 }
