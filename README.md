@@ -1,24 +1,26 @@
-# Demo Project
+# GraphQL Full-Stack Project
 
-This is a demo project includes a Web UI and an API server. Everything is implemented from scratch.
+This project is implemented with a React Client App and a [GraphQL](https://graphql.org/) server in NodeJS. 
+
+Everything is implemented from scratch.
 
 ## Built With
 As general, I am using **ESLint** for Typescript code style checking, and **Docker** for containerization.
 
-For the FrontEnd, I am using
+For the client, I am using
 
 * Webpack
 * React
 * Typescript
-* [Apollo Graphql](https://www.apollographql.com/) - The GraphQL Platform, can also be a replacement of Redux.
+* [Apollo Client](https://www.apollographql.com/docs/react/) - A library to use GraphQL to build client applications.
 * [BlueprintJS](https://blueprintjs.com/) - A React-based UI toolkit for the web.
 
-For the API Server, I am using
+For the server, I am using
 
 * NodeJS
 * Typescript
-* GraphQL
-* Mongoose - A MongoDB client for NodeJS
+* [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+* [Mongoose](https://mongoosejs.com/) - A Schema-based MongoDB client for NodeJS
 
 ## Getting Started
 

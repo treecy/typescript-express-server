@@ -21,7 +21,7 @@ UserSchema.pre('save', (next) => {
   next();
 });
 
-UserSchema.methods.fullName = (): string => `${this.firstName.trim()} ${this.lastName.trim()}`;
+UserSchema.methods.fullName = () => `${this.firstName.trim()} ${this.lastName.trim()}`;
 
 export const User: Model<IUserModel> = model<IUserModel>('User', UserSchema);
 
