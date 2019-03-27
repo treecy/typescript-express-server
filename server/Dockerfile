@@ -12,7 +12,7 @@ RUN npm install
 # Bundle app source
 COPY . ./
 
-RUN npm run clean && npm run compile
+RUN npm run compile
 
 FROM node:10
 
@@ -21,11 +21,11 @@ WORKDIR /srv/app
 
 ## Install production node_modules
 COPY --from=compile /usr/src/app/package*.json /srv/app/
-RUN npm install -P
+RUN npm install --production
 
 ## Copy compiled files etc...
 COPY --from=compile /usr/src/app/dist/ /srv/app/dist/
 
 
-EXPOSE 8080
-CMD ["npm", "start"]
+EXPOSE 80
+CMD ["node", "dist/index.js"]

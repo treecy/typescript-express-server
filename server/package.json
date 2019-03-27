@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --extensions .ts,.js src/index.ts",
+    "start": "node dist/index.js ",
+    "start:dev": "nodemon --exec babel-node --extensions .ts,.js src/index.ts",
     "compile": "npx babel --extensions .ts,.js src --out-dir dist --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

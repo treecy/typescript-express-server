@@ -57,7 +57,7 @@ Running the server
 ```
 cd server
 npm install
-npm start
+npm start:dev
 ```
 
 After this you should be able to see the web app is lanched in `http://localhost:3000` and the server is in `http://localhost:4000`, webpack-dev-sever should proxy the `/graphql` endpoint to the server.

@@ -22,9 +22,9 @@ FROM nginx:1.15
 WORKDIR /srv/app
 
 ## Copy compiled files etc...
-COPY --from=compile /usr/src/app/dist/ /srv/app/dist/
+COPY --from=compile /usr/src/app/dist/ /srv/app/
 COPY --from=compile /usr/src/app/package.json /srv/app/
-COPY --from=compile /usr/src/app/nginx.conf /srv/app/
+COPY --from=compile /usr/src/app/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

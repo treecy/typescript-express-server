@@ -4,15 +4,21 @@ services:
     build: ./app
     ports:
       - "3000:80"
+    networks:
+      internal:
 
   server:
     build: ./server
     ports:
       - "4000:80"
+    environment:
+      - NODE_ENV=production
+      - PORT=80
+      - TZ=UTC
     networks:
       internal:
         aliases:
-          - server
+          - api
   mongo:
     image: "mongo:3.4"
     container_name: mongo
@@ -20,11 +26,17 @@ services:
       - 27017:27017
     volumes:
       - ~/data/db:/data/db
+    networks:
+      internal:
+        aliases:
+          - mongo
 
   mongo-express:
     image: "mongo-express:latest"
     ports:
       - 8081:8081
+    networks:
+      internal:
 
 networks:
   internal:
